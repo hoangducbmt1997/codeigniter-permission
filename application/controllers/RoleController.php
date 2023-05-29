@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
 	exit('No direct script access allowed');
 }
 
-class RoleController extends CI_Controller
+class RoleController extends MY_Controller
 {
 	public function __construct()
 	{
@@ -13,7 +13,6 @@ class RoleController extends CI_Controller
 		$this->load->model('Permission_Model');
 		$this->load->model('Role_Permissions_Model');
 
-		check_login();
 	}
 
 	// View list role

@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 
-class UserController extends CI_Controller
+class UserController extends MY_Controller
 {
     public function __construct()
     {
@@ -24,7 +24,6 @@ class UserController extends CI_Controller
         $config['allowed_types'] = 'jpg|jpeg|png';
         $config['max_size'] = 2048;
         $this->load->library('upload', $config);
-		check_login();
     }
 
     // View list user
