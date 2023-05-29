@@ -93,9 +93,9 @@ class UserController extends MY_Controller
 				
                 return redirect(base_url('users'));
             } else {
-                //Handling when an error occurs during file upload
+                // Handling when an error occurs during file upload
                 echo $error = $this->upload->display_errors();
-                //Error handling or navigation to another page
+                // Error handling or navigation to another page
             }
 
         } else {
@@ -150,14 +150,20 @@ class UserController extends MY_Controller
 
                     // Start uploading new photos
                     if ($this->upload->do_upload('image')) {
-                        // Lưu tên file ảnh mới
+                        // Save new image file name
                         $upload_data = $this->upload->data();
                         $image_name = $upload_data['file_name'];
                         $user_data['image'] = $image_name;
                     } else {
                         //  Display error
-                        echo $error = $this->upload->display_errors();
-                        // May display an error message or redirect to another page
+                        $error = $this->upload->display_errors();
+
+						$this->session->set_flashdata('sweet_alert', array(
+							'title' => 'Error',
+							'text' => $error,
+							'type' => 'error'
+						));
+		
                     }
                 }
 
