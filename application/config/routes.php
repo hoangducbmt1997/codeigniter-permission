@@ -113,6 +113,8 @@ $route['user/search_time']  				= 'UserController/search_users_by_time';
 $route['user/role/(:num)'] 		= 'UserController/edit_role_user/$1';
 $route['user/role/update'] 		= 'UserController/update_role_user';
 
+$route['users/search_time']  				= 'UserController/search_user_by_time';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +138,8 @@ $route['roles/delete/(:num)'] 	= 'RoleController/delete/$1';
 $route['role/permissions/(:num)'] 	= 'RoleController/edit_role_permissions/$1';
 $route['role/permissions/update'] 	= 'RoleController/update_permissions_role';
 
+$route['roles/search_time']  		= 'RoleController/search_role_by_time';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -154,6 +158,8 @@ $route['permissions/edit/(:num)'] 		= 'PermissionController/edit/$1';
 $route['permissions/update/(:num)'] 	= 'PermissionController/update/$1';
 
 $route['permissions/delete/(:num)'] 	= 'PermissionController/delete/$1';
+
+$route['permissions/search_time']  		= 'PermissionController/search_permission_by_time';
 
 
 

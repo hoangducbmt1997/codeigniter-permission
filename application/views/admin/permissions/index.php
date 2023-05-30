@@ -9,6 +9,26 @@
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
+
+					<table cellspacing="5" cellpadding="5">
+							<form method="POST" action="<?php echo base_url('permissions/search_time')?>" class="d-flex mb-3">
+								<tr>
+									<label class="mr-2" for="">Start date:</label>
+									<input type="text" id="start_time"  name="start_time">
+								</tr>
+								<?php echo form_error('start_time')?>
+
+								<tr>
+									<label class="mr-2 ml-2" for="">End date:</label>
+									<input type="text" id="end_time"  name="end_time">
+
+								</tr>
+								<?php echo form_error('end_time')?>
+								<tr>
+									<button class="btn btn-success ml-3">Search</button>
+								</tr>
+							</form>
+						</table>
 						<table id="table-user" class="table table-bordered table-striped">
 							<thead>
 								<tr>

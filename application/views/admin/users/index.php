@@ -9,7 +9,7 @@
 					<!-- /.card-header -->
 					<div class="card-body">
 						<table cellspacing="5" cellpadding="5">
-							<form method="POST" action="<?php echo base_url('user/search_time')?>" class="d-flex mb-3">
+							<form method="POST" action="<?php echo base_url('users/search_time')?>" class="d-flex mb-3">
 								<tr>
 									<label class="mr-2" for="">Start date:</label>
 									<input type="text" id="start_time"  name="start_time">

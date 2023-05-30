@@ -3,6 +3,7 @@
 if (!defined('BASEPATH')) {
 	exit('No direct script access allowed');
 }
+use Carbon\Carbon;
 
 class PermissionController extends MY_Controller
 {
@@ -150,6 +151,31 @@ class PermissionController extends MY_Controller
 		} else {
 			$this->form_validation->set_message('validate_action', 'The {field} field must be a valid action format (no spaces, no trailing underscore, alphanumeric with optional underscores, no numbers, no underscore at the end)');
 			return false;
+		}
+	}
+
+	public function search_permission_by_time(){
+
+		$this->form_validation->set_rules('start_time', 'Start Time', 'required|date');
+		$this->form_validation->set_rules('end_time', 'Email Time', 'required|date');
+
+		if ($this->form_validation->run() == true) {
+			$start_time = $this->input->post('start_time');
+			$end_time = $this->input->post('end_time');
+
+			$start_time = Carbon::createFromFormat('m/d/Y', $start_time)->format('Y-m-d H:i:s');
+			$end_time = Carbon::createFromFormat('m/d/Y', $end_time)->format('Y-m-d H:i:s');
+
+
+			$permissions = $this->Permission_Model->search_permissions_by_time($start_time, $end_time);
+
+			$this->data['permissions'] = $permissions;
+			$this->data['content'] = 'admin/permissions/index';
+			$this->data['js'] = 'admin/permissions/js';
+			$this->load->view('admin_layout/layout', $this->data);
+		} else {
+			echo $this->index();
+
 		}
 	}
 

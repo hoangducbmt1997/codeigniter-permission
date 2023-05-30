@@ -98,6 +98,8 @@ class User_Model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('users');
+
+		$this->db->where('is_deleted', '0');
 		$this->db->where('created_at >=', $startTime);
 		$this->db->where('created_at <=', $endTime);
 		$query = $this->db->get();

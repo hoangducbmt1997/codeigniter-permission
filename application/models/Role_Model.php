@@ -50,4 +50,16 @@ class Role_Model extends CI_Model
 		$this->db->where('id', $role_id);
 		$this->db->delete('roles');
 	}
+
+	public function search_roles_by_time($startTime, $endTime)
+	{
+		$this->db->select('*');
+		$this->db->from('roles');
+
+		$this->db->where('created_at >=', $startTime);
+		$this->db->where('created_at <=', $endTime);
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }

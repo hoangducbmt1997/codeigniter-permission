@@ -9,6 +9,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
+use Carbon\Carbon;
+
 
 class UserController extends MY_Controller
 {
@@ -456,21 +458,32 @@ class UserController extends MY_Controller
 
 		redirect(base_url('/users'));
 	}
-	public function search_user_by_time()
-	{
-		$startTime = $this->input->post('start_time');
-		$endTime = $this->input->post('end_time');
 
 
-		$startTime = date('Y-m-d', strtotime($startTime));
-		$endTime = date('Y-m-d', strtotime($endTime));
+	
+	public function search_user_by_time(){
+
+		$this->form_validation->set_rules('start_time', 'Start Time', 'required|date');
+		$this->form_validation->set_rules('end_time', 'Email Time', 'required|date');
+
+		if ($this->form_validation->run() == true) {
+			$start_time = $this->input->post('start_time');
+			$end_time = $this->input->post('end_time');
+
+			$start_time = Carbon::createFromFormat('m/d/Y', $start_time)->startOfDay()->toDateTimeString();
+			$end_time = Carbon::createFromFormat('m/d/Y', $end_time)->endOfDay()->toDateTimeString();
 
 
-		$users = $this->user_model->search_users_by_time($startTime, $endTime);
-		$this->data['users'] = $users;
-		$this->data['content'] = 'admin/users/index';
-		$this->data['js'] = 'admin/users/js';
-		$this->load->view('admin_layout/layout', $this->data);
+			$users = $this->User_Model->search_users_by_time($start_time, $end_time);
+
+			$this->data['users'] = $users;
+			$this->data['content'] = 'admin/users/index';
+			$this->data['js'] = 'admin/users/js';
+			$this->load->view('admin_layout/layout', $this->data);
+		} else {
+			echo $this->index();
+
+		}
 	}
 
 }

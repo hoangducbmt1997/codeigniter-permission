@@ -50,4 +50,16 @@ class Permission_Model extends CI_Model
 		$this->db->where('id', $permission_id);
 		$this->db->delete('permissions');
 	}
+	public function search_permissions_by_time($startTime, $endTime)
+	{
+		$this->db->select('*');
+		$this->db->from('permissions');
+
+		$this->db->where('created_at >=', $startTime);
+		$this->db->where('created_at <=', $endTime);
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 }
