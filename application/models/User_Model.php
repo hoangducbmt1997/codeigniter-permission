@@ -94,5 +94,16 @@ class User_Model extends CI_Model
 			return null;
 		}
 	}
+	public function search_users_by_time($startTime, $endTime)
+	{
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('created_at >=', $startTime);
+		$this->db->where('created_at <=', $endTime);
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 
 }

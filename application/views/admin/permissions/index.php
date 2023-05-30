@@ -28,12 +28,8 @@
 										<td>
 											<?php echo $permission->action ?>
 										</td>
-										<td>
-											<?php echo $permission->created_at ?>
-										</td>
-										<td>
-											<?php echo $permission->updated_at ?>
-										</td>
+										<td><?php echo (new DateTime($permission->created_at))->format('d M Y '); ?></td>
+										<td><?php echo (new DateTime($permission->updated_at))->format('d M Y'); ?></td>
 										<td class="text-center">
 											<a class="btn btn-success"
 												href="<?php echo base_url('permissions/edit/' . $permission->id) ?>">Edit</a>

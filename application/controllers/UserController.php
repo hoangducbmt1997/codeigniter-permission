@@ -85,11 +85,13 @@ class UserController extends MY_Controller
 				// Save data
 				$user_id = $this->User_Model->create_user($user_data);
 
-				$this->session->set_flashdata('sweet_alert', array(
-					'title' => 'Success',
-					'text' => 'User added successfully!',
-					'type' => 'success'
-				)
+				$this->session->set_flashdata(
+					'sweet_alert',
+					array(
+						'title' => 'Success',
+						'text' => 'User added successfully!',
+						'type' => 'success'
+					)
 				);
 
 				return redirect(base_url('users'));
@@ -159,11 +161,13 @@ class UserController extends MY_Controller
 						//  Display error
 						$error = $this->upload->display_errors();
 
-						$this->session->set_flashdata('sweet_alert', array(
-							'title' => 'Error',
-							'text' => $error,
-							'type' => 'error'
-						)
+						$this->session->set_flashdata(
+							'sweet_alert',
+							array(
+								'title' => 'Error',
+								'text' => $error,
+								'type' => 'error'
+							)
 						);
 						redirect(base_url('users/edit'));
 					}
@@ -177,11 +181,13 @@ class UserController extends MY_Controller
 				// Update data
 				$this->User_Model->update_user($user_id, $user_data);
 
-				$this->session->set_flashdata('sweet_alert', array(
-					'title' => 'Success',
-					'text' => 'User updated successfully!',
-					'type' => 'success'
-				)
+				$this->session->set_flashdata(
+					'sweet_alert',
+					array(
+						'title' => 'Success',
+						'text' => 'User updated successfully!',
+						'type' => 'success'
+					)
 				);
 
 				// Redirect to success page
@@ -213,11 +219,13 @@ class UserController extends MY_Controller
 		$logged_in_user_role = $this->User_Model->get_user_role($logged_in_user_id);
 
 		if ($logged_in_user_id == $user_id && $logged_in_user_role == 'super_admin') {
-			$this->session->set_flashdata('sweet_alert', array(
-				'title' => 'Error',
-				'text' => 'You cannot delete your own account!',
-				'type' => 'error'
-			)
+			$this->session->set_flashdata(
+				'sweet_alert',
+				array(
+					'title' => 'Error',
+					'text' => 'You cannot delete your own account!',
+					'type' => 'error'
+				)
 			);
 			return redirect(base_url('users/list'));
 		}
@@ -225,11 +233,13 @@ class UserController extends MY_Controller
 		// Delete user
 		$this->User_Model->soft_delete_user($user_id);
 
-		$this->session->set_flashdata('sweet_alert', array(
-			'title' => 'Success',
-			'text' => 'User deleted successfully!',
-			'type' => 'success'
-		)
+		$this->session->set_flashdata(
+			'sweet_alert',
+			array(
+				'title' => 'Success',
+				'text' => 'User deleted successfully!',
+				'type' => 'success'
+			)
 		);
 
 		return redirect(base_url('users'));
@@ -290,11 +300,13 @@ class UserController extends MY_Controller
 						]);
 					}
 
-					$this->session->set_flashdata('sweet_alert', array(
-						'title' => 'Success',
-						'text' => 'Import users successfully!',
-						'type' => 'success'
-					)
+					$this->session->set_flashdata(
+						'sweet_alert',
+						array(
+							'title' => 'Success',
+							'text' => 'Import users successfully!',
+							'type' => 'success'
+						)
 					);
 
 					// Data imported successfully
@@ -302,11 +314,13 @@ class UserController extends MY_Controller
 
 				} else {
 					// No data
-					$this->session->set_flashdata('sweet_alert', array(
-						'title' => 'Error',
-						'text' => 'No data found in the Excel file.!',
-						'type' => 'error'
-					)
+					$this->session->set_flashdata(
+						'sweet_alert',
+						array(
+							'title' => 'Error',
+							'text' => 'No data found in the Excel file.!',
+							'type' => 'error'
+						)
 					);
 					redirect(base_url('users/list'));
 				}
@@ -315,11 +329,13 @@ class UserController extends MY_Controller
 			}
 		} else {
 			//No file uploaded.
-			$this->session->set_flashdata('sweet_alert', array(
-				'title' => 'Error',
-				'text' => 'No file uploaded!',
-				'type' => 'error'
-			)
+			$this->session->set_flashdata(
+				'sweet_alert',
+				array(
+					'title' => 'Error',
+					'text' => 'No file uploaded!',
+					'type' => 'error'
+				)
 			);
 			redirect(base_url('users/list'));
 
@@ -429,14 +445,32 @@ class UserController extends MY_Controller
 			// Update roles for user 
 			$this->User_Role_Model->update_role_for_user($user_id, $selected_role);
 		}
-		$this->session->set_flashdata('sweet_alert', array(
-			'title' => 'Success',
-			'text' => 'Role update successful!',
-			'type' => 'success'
-		)
+		$this->session->set_flashdata(
+			'sweet_alert',
+			array(
+				'title' => 'Success',
+				'text' => 'Role update successful!',
+				'type' => 'success'
+			)
 		);
 
 		redirect(base_url('/users'));
+	}
+	public function search_user_by_time()
+	{
+		$startTime = $this->input->post('start_time');
+		$endTime = $this->input->post('end_time');
+
+
+		$startTime = date('Y-m-d', strtotime($startTime));
+		$endTime = date('Y-m-d', strtotime($endTime));
+
+
+		$users = $this->user_model->search_users_by_time($startTime, $endTime);
+		$this->data['users'] = $users;
+		$this->data['content'] = 'admin/users/index';
+		$this->data['js'] = 'admin/users/js';
+		$this->load->view('admin_layout/layout', $this->data);
 	}
 
 }

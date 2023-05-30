@@ -38,12 +38,6 @@
 		});
 	});
 
-	$(document).ready(function () {
-		$('#table-user_filter').css({
-			'display': 'flex',
-			'justify-content': 'flex-end'
-		});
-	});
 
 	$(document).ready(function () {
 		$('.dataTables_filter').css({

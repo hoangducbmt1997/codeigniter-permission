@@ -9,7 +9,19 @@
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
-						<table id="table-user" class="table table-bordered table-striped">
+						<table cellspacing="5" cellpadding="5">
+							<tbody class="d-flex mb-3">
+								<tr>
+									<label class="mr-2" for="">Star date:</label>
+									<input type="text" id="min" name="min">
+								</tr>
+								<tr>
+									<label class="mr-2 ml-2" for="">End date:</label>
+									<input type="text" id="max" name="max">
+								</tr>
+							</tbody>
+						</table>
+						<table id="table-role" class="table table-bordered table-striped">
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -31,15 +43,18 @@
 										</td>
 
 										<td>
-											<?php echo $role->created_at ?>
+											<?php echo (new DateTime($role->created_at))->format('Y-m-d'); ?>
 										</td>
 										<td>
-											<?php echo $role->updated_at ?>
+											<?php echo (new DateTime($role->updated_at))->format('d M Y'); ?>
 										</td>
 										<td class="text-center">
-											<a class="btn btn-warning" href="<?php echo base_url('role/permissions/' . $role->id) ?>">Permissions</a>
-											<a class="btn btn-success" href="<?php echo base_url('roles/edit/' . $role->id) ?>">Edit</a>
-											<a class="btn btn-danger" href="<?php echo base_url('roles/delete/' . $role->id) ?>">Delete</a>
+											<a class="btn btn-warning"
+												href="<?php echo base_url('role/permissions/' . $role->id) ?>">Permissions</a>
+											<a class="btn btn-success"
+												href="<?php echo base_url('roles/edit/' . $role->id) ?>">Edit</a>
+											<a class="btn btn-danger"
+												href="<?php echo base_url('roles/delete/' . $role->id) ?>">Delete</a>
 										</td>
 									</tr>
 								<?php endforeach; ?>

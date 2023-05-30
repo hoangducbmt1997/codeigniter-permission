@@ -106,6 +106,9 @@ $route['users/delete/(:num)'] 	= 'UserController/delete/$1';
 $route['users/export'] 			= 'UserController/export';
 $route['users/import'] 			= 'UserController/import';
 
+$route['user/search_time']  				= 'UserController/search_users_by_time';
+
+
 // Route User has Role	
 $route['user/role/(:num)'] 		= 'UserController/edit_role_user/$1';
 $route['user/role/update'] 		= 'UserController/update_role_user';

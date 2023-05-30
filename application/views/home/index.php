@@ -49,7 +49,7 @@
 					password: password
 				};
 				$.ajax({
-					url: 'http://localhost/CodeigniterRESTAPI/index.php/auth/login',
+					url: 'http://localhost/CodeigniterRestApi/index.php/auth/login',
 					type: 'POST',
 					data: loginData,
 					headers: {
@@ -75,7 +75,7 @@
 			$('#btnLogout').click(function () {
 
 				$.ajax({
-					url: 'http://localhost/CodeigniterRESTAPI/index.php/auth/logout',
+					url: 'http://localhost/CodeigniterRestApi/index.php/auth/logout',
 					type: 'POST',
 					headers: {
 						'Client-Service': 'frontend-client',
@@ -107,7 +107,7 @@
 			};
 
 			$.ajax({
-				url: 'http://localhost/CodeigniterRESTAPI/index.php/book/create',
+				url: 'http://localhost/CodeigniterRestApi/index.php/book/create',
 				type: 'POST',
 				data: newData,
 				headers: {
@@ -146,7 +146,7 @@
 			console.log(idUpdate);
 
 			$.ajax({
-				url: 'http://localhost/CodeigniterRESTAPI/index.php/book/update/' + idUpdate,
+				url: 'http://localhost/CodeigniterRestApi/index.php/book/update/' + idUpdate,
 				type: 'PUT',
 				data: updatedData,
 				headers: {
@@ -174,7 +174,7 @@
 		$('#btnDelete').click(function () {
 			var id = $('#deleteId').val();
 			$.ajax({
-				url: 'http://localhost/CodeigniterRESTAPI/index.php/book/delete/' + id,
+				url: 'http://localhost/CodeigniterRestApi/index.php/book/delete/' + id,
 				type: 'DELETE',
 				headers: {
 					'Client-Service': 'frontend-client',
@@ -201,7 +201,7 @@
 		// Function to load data from the API
 		function loadData() {
 			$.ajax({
-				url: 'http://localhost/CodeigniterRESTAPI/index.php/book',
+				url: 'http://localhost/CodeigniterRestApi/index.php/book',
 				type: 'GET',
 				dataType: 'json', // Specify the expected data type
 				headers: {
