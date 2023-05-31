@@ -1,5 +1,9 @@
+
 <script src="<?php echo base_url('/assets/plugins/jquery/jquery.min.js') ?>"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="<?php echo base_url('/assets/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -25,8 +29,7 @@
 <script src="<?php echo base_url('/assets/plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('/assets/dist/js/adminlte.min.js') ?>"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 
 
 <script>
@@ -34,15 +37,7 @@
 
 	$(function () {
 		$("#table-user").DataTable({
-			"responsive": true,
-			"lengthChange": false,
-			"autoWidth": false,
-			"pageLength": 10,
-		});
-	});
-
-	$(function () {
-		$(".table-user").DataTable({
+			"searching": false,
 			"responsive": true,
 			"lengthChange": false,
 			"autoWidth": false,

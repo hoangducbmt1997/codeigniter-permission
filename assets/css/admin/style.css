@@ -1,4 +1,6 @@
-
+a{
+	text-decoration: none;
+}
 
 .table>:not(:last-child)>:last-child>* {
     border-bottom-color: #dee2e6 !important;

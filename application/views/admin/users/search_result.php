@@ -1,12 +1,11 @@
-<h5 class="mt-5 text-bold mb-3">Search Result:</h5>
 <div class="col-12">
 	<div class="card">
 		<div class="card-header">
-			<h3 class="card-title text-bold">All Users</h3>
+			<h3 class="card-title mt-2 text-bold">All Users</h3>
 		</div>
 		<!-- /.card-header -->
 		<div class="card-body">
-			<table class="display nowrap table-user" style="width:100%">
+			<table id="table-user" class="display nowrap" style="width:100%">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -42,7 +41,8 @@
 							<td class="text-center">
 								<a class="btn btn-warning" href="<?php echo base_url('user/role/' . $user->id) ?>">Role</a>
 								<a class="btn btn-success" href="<?php echo base_url('users/edit/' . $user->id) ?>">Edit</a>
-								<a class="btn btn-danger" href="<?php echo base_url('users/delete/' . $user->id) ?>">Delete</a>
+								<a class="btn btn-danger"
+									href="<?php echo base_url('users/delete/' . $user->id) ?>">Delete</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>

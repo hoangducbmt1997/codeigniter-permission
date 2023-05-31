@@ -1,39 +1,37 @@
 <section class="content">
 
 	<div class="container-fluid">
-		<div class="row">
+		<form method="POST" id="search-permission">
+			<div class="row">
+				<div class="col-2">
+					<label class="mr-2" for="">Start date</label>
+					<input type="text" class="form-control " id="start_time" name="start_time">
+				</div>
+				<div class="col-2">
+					<label class="mr-2" for="">End date</label>
+					<input type="text" class="form-control " id="end_time" name="end_time">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<button class="btn btn-success mt-3">Search</button>
+				</div>
+			</div>
+		</form>
+		<div class="row mt-3 mb-3">
+			<div class="col-4 mt-1">
+				<a href="<?php echo base_url('permissions/create') ?>" class="btn btn-success col-4">Create action<i
+						class="ml-1 fas fa-plus-square"></i></a>
+			</div>
+		</div>
+		<div class="row" id="searchResult">
 			<div class="col-12">
 				<div class="card">
 					<div class="card-header">
-						<h3 class="card-title text-bold">All Permissions</h3>
+						<h3 class="card-title text-bold mt-2">All Permissions</h3>
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
-
-						<table cellspacing="5" cellpadding="5">
-							<form method="POST" id="search-permission" class="d-flex mb-3">
-								<tr>
-									<label class="mr-2" for="">Start date</label>
-									<input type="text" class="form-control col-2" id="start_time" name="start_time">
-								</tr>
-								<div class="error">
-									<?php echo form_error('start_time') ?>
-								</div>
-
-								<tr>
-									<label class="mr-2" for="">End date</label>
-									<input type="text" class="form-control col-2" id="end_time" name="end_time">
-
-								</tr>
-								<div class="error">
-									<?php echo form_error('end_time') ?>
-								</div>
-
-								<tr>
-									<button class="btn btn-success mt-3">Search</button>
-								</tr>
-							</form>
-						</table>
 						<table id="table-user" class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -77,12 +75,7 @@
 			</div>
 			<!-- /.col -->
 		</div>
-		<div class="row">
-			<div class="col-4 mt-1">
-				<a href="<?php echo base_url('permissions/create') ?>" class="btn btn-success col-4">Create action<i
-						class="ml-1 fas fa-plus-square"></i></a>
-			</div>
-		</div>
+
 	</div>
 
 	<div id="searchResult" class="row">

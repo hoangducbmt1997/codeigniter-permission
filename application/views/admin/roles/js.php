@@ -1,24 +1,16 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url('/assets/js/bootstrap-datetimepicker.min.js') ?>"></script>
+
 <script>
 	$(document).ready(function () {
 
-		$("#start_time").datepicker({
-			dateFormat: 'dd/MM/yy',
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "-90:+00",
-			onSelect: function (dateText, inst) {
-				$(this).attr('value', dateText);
-			}
+		$('#start_time').datetimepicker({
+			format: 'DD MMM YYYY HH:mm'
 		});
-
-		$("#end_time").datepicker({
-			dateFormat: 'dd/MM/yy',
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "-90:+00",
-			onSelect: function (dateText, inst) {
-				$(this).attr('value', dateText);
-			}
+		$('#end_time').datetimepicker({
+			format: 'DD MMM YYYY HH:mm'
 		});
 
 		$("#search-role").submit(function (e) {

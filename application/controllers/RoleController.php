@@ -19,7 +19,6 @@ class RoleController extends MY_Controller
 	// View list role
 	public function index()
 	{
-
 		if (!check_access('role_list')) {
 			redirect(base_url('403'));
 		}
@@ -248,9 +247,8 @@ class RoleController extends MY_Controller
 		$end_time = $this->input->post('end_date');
 
 
-
-		$start_time = DateTime::createFromFormat("d/m/Y", $start_time)->setTime(0, 0, 0)->format("Y-m-d H:i:s");
-		$end_time = DateTime::createFromFormat("d/m/Y", $end_time)->setTime(23, 59, 59)->format("Y-m-d H:i:s");
+		$start_time = date('Y-m-d H:i:s', strtotime($start_time));
+		$end_time = date('Y-m-d H:i:s', strtotime($end_time));
 		
 		$roles = $this->Role_Model->search_roles_by_time($start_time, $end_time);
 

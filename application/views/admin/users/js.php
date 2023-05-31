@@ -1,24 +1,16 @@
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url('/assets/js/bootstrap-datetimepicker.min.js') ?>"></script>
+
+<script type="text/javascript">
+
 	$(document).ready(function () {
-
-		$("#start_time").datepicker({
-			dateFormat: 'dd/MM/yy',
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "-90:+00",
-			onSelect: function (dateText, inst) {
-				$(this).attr('value', dateText);
-			}
+		$('#start_time').datetimepicker({
+			format: 'DD MMM YYYY HH:mm'
 		});
-
-		$("#end_time").datepicker({
-			dateFormat: 'dd/MM/yy',
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "-90:+00",
-			onSelect: function (dateText, inst) {
-				$(this).attr('value', dateText);
-			}
+		$('#end_time').datetimepicker({
+			format: 'DD MMM YYYY HH:mm'
 		});
 
 		$("#search-user").submit(function (e) {
@@ -27,20 +19,18 @@
 			var start_time = $("#start_time").val();
 			var end_time = $("#end_time").val();
 
-			var formatted_start_time = moment(start_time, "DD/MMM/YYYY").format("DD/MM/YYYY");
-			var formatted_end_time = moment(end_time, "DD/MMM/YYYY").format("DD/MM/YYYY");
 
 			$.ajax({
 				url: "<?php echo base_url('/users/search'); ?>",
 				method: "POST",
 				data: {
-					start_date: formatted_start_time,
-					end_date: formatted_end_time
+					start_date: start_time,
+					end_date: end_time
 				},
 				success: function (response) {
 					$("#searchResult").html(response);
 					$(function () {
-						$(".table-user").DataTable({
+						$("#table-user").DataTable({
 							"responsive": true,
 							"lengthChange": false,
 							"autoWidth": false,
