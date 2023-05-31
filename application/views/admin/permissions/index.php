@@ -10,22 +10,27 @@
 					<!-- /.card-header -->
 					<div class="card-body">
 
-					<table cellspacing="5" cellpadding="5">
-							<form method="POST" action="<?php echo base_url('permissions/search_time')?>" class="d-flex mb-3">
+						<table cellspacing="5" cellpadding="5">
+							<form method="POST" id="search-permission" class="d-flex mb-3">
 								<tr>
-									<label class="mr-2" for="">Start date:</label>
-									<input type="text" id="start_time"  name="start_time">
+									<label class="mr-2" for="">Start date</label>
+									<input type="text" class="form-control col-2" id="start_time" name="start_time">
 								</tr>
-								<?php echo form_error('start_time')?>
+								<div class="error">
+									<?php echo form_error('start_time') ?>
+								</div>
 
 								<tr>
-									<label class="mr-2 ml-2" for="">End date:</label>
-									<input type="text" id="end_time"  name="end_time">
+									<label class="mr-2" for="">End date</label>
+									<input type="text" class="form-control col-2" id="end_time" name="end_time">
 
 								</tr>
-								<?php echo form_error('end_time')?>
+								<div class="error">
+									<?php echo form_error('end_time') ?>
+								</div>
+
 								<tr>
-									<button class="btn btn-success ml-3">Search</button>
+									<button class="btn btn-success mt-3">Search</button>
 								</tr>
 							</form>
 						</table>
@@ -48,8 +53,12 @@
 										<td>
 											<?php echo $permission->action ?>
 										</td>
-										<td><?php echo (new DateTime($permission->created_at))->format('d M Y '); ?></td>
-										<td><?php echo (new DateTime($permission->updated_at))->format('d M Y'); ?></td>
+										<td>
+											<?php echo (new DateTime($permission->created_at))->format('d M Y '); ?>
+										</td>
+										<td>
+											<?php echo (new DateTime($permission->updated_at))->format('d M Y'); ?>
+										</td>
 										<td class="text-center">
 											<a class="btn btn-success"
 												href="<?php echo base_url('permissions/edit/' . $permission->id) ?>">Edit</a>
@@ -75,7 +84,12 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="searchResult" class="row">
+
 	</div>
+	</div>
+
 	<!-- /.row -->
 	</div>
 	<!-- /.container-fluid -->

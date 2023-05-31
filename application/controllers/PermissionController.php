@@ -156,27 +156,16 @@ class PermissionController extends MY_Controller
 
 	public function search_permission_by_time(){
 
-		$this->form_validation->set_rules('start_time', 'Start Time', 'required|date');
-		$this->form_validation->set_rules('end_time', 'Email Time', 'required|date');
+		$start_time = $this->input->post('start_date');
+		$end_time = $this->input->post('end_date');
 
-		if ($this->form_validation->run() == true) {
-			$start_time = $this->input->post('start_time');
-			$end_time = $this->input->post('end_time');
+		$start_time = DateTime::createFromFormat("d/m/Y", $start_time)->setTime(0, 0, 0)->format("Y-m-d H:i:s");
+		$end_time = DateTime::createFromFormat("d/m/Y", $end_time)->setTime(23, 59, 59)->format("Y-m-d H:i:s");
+		
+		$permissions = $this->Permission_Model->search_permissions_by_time($start_time, $end_time);
 
-			$start_time = Carbon::createFromFormat('m/d/Y', $start_time)->format('Y-m-d H:i:s');
-			$end_time = Carbon::createFromFormat('m/d/Y', $end_time)->format('Y-m-d H:i:s');
-
-
-			$permissions = $this->Permission_Model->search_permissions_by_time($start_time, $end_time);
-
-			$this->data['permissions'] = $permissions;
-			$this->data['content'] = 'admin/permissions/index';
-			$this->data['js'] = 'admin/permissions/js';
-			$this->load->view('admin_layout/layout', $this->data);
-		} else {
-			echo $this->index();
-
-		}
+		$data['search_result'] = $permissions;
+		$this->load->view('admin/permissions/search_result', $data);
 	}
 
 

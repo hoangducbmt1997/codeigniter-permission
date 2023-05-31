@@ -9,17 +9,17 @@
 					<!-- /.card-header -->
 					<div class="card-body">
 						<table cellspacing="5" cellpadding="5">
-							<form method="POST" action="<?php echo base_url('users/search_time')?>" class="d-flex mb-3">
+							<form method="POST" id="search-user" class="d-flex mb-3">
 								<tr>
-									<label class="mr-2" for="">Start date:</label>
-									<input type="text" id="start_time"  name="start_time">
+									<label class="mr-2" for="">Start date</label>
+									<input type="text" class="form-control col-2" id="start_time"  name="start_time">
 								</tr>
 								<tr>
-									<label class="mr-2 ml-2" for="">End date:</label>
-									<input type="text" id="end_time"  name="end_time">
+									<label class="mr-2" for="">End date</label>
+									<input type="text" class="form-control col-2" id="end_time"  name="end_time">
 								</tr>
 								<tr>
-									<button class="btn btn-success ml-3">Search</button>
+									<button class="btn btn-success mt-3">Search</button>
 								</tr>
 							</form>
 						</table>
@@ -54,7 +54,7 @@
 											<?php endif; ?>
 										</td>
 										<td>
-											<?php echo (new DateTime($user->created_at))->format('Y-m-d'); ?>
+											<?php echo (new DateTime($user->created_at))->format('d M Y'); ?>
 										</td>
 
 
@@ -101,6 +101,9 @@
 					</div>
 				</form>
 			</div>
+		</div>
+		<div id="searchResult" class="row">
+
 		</div>
 	</div>
 	<!-- /.row -->

@@ -26,12 +26,23 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('/assets/dist/js/adminlte.min.js') ?>"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 
 <script>
 	// Data tables
 
 	$(function () {
 		$("#table-user").DataTable({
+			"responsive": true,
+			"lengthChange": false,
+			"autoWidth": false,
+			"pageLength": 10,
+		});
+	});
+
+	$(function () {
+		$(".table-user").DataTable({
 			"responsive": true,
 			"lengthChange": false,
 			"autoWidth": false,

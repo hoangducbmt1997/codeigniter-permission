@@ -244,26 +244,18 @@ class RoleController extends MY_Controller
 
 	public function search_role_by_time(){
 
-		$this->form_validation->set_rules('start_time', 'Start Time', 'required|date');
-		$this->form_validation->set_rules('end_time', 'Email Time', 'required|date');
+		$start_time = $this->input->post('start_date');
+		$end_time = $this->input->post('end_date');
 
-		if ($this->form_validation->run() == true) {
-			$start_time = $this->input->post('start_time');
-			$end_time = $this->input->post('end_time');
 
-			$start_time = Carbon::createFromFormat('m/d/Y', $start_time)->format('Y-m-d H:i:s');
-			$end_time = Carbon::createFromFormat('m/d/Y', $end_time)->format('Y-m-d H:i:s');
 
-			$role = $this->Role_Model->search_roles_by_time($start_time, $end_time);
+		$start_time = DateTime::createFromFormat("d/m/Y", $start_time)->setTime(0, 0, 0)->format("Y-m-d H:i:s");
+		$end_time = DateTime::createFromFormat("d/m/Y", $end_time)->setTime(23, 59, 59)->format("Y-m-d H:i:s");
+		
+		$roles = $this->Role_Model->search_roles_by_time($start_time, $end_time);
 
-			$this->data['roles'] = $role;
-			$this->data['content'] = 'admin/roles/index';
-			$this->data['js'] = 'admin/roles/js';
-			$this->load->view('admin_layout/layout', $this->data);
-		} else {
-			echo $this->index();
-
-		}
+		$data['search_result'] = $roles;
+		$this->load->view('admin/roles/search_result', $data);
 	}
 
 
