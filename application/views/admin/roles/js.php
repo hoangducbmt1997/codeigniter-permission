@@ -18,16 +18,13 @@
 
 			var start_time = $("#start_time").val();
 			var end_time = $("#end_time").val();
-
-			var formatted_start_time = moment(start_time, "DD/MMM/YYYY").format("DD/MM/YYYY");
-			var formatted_end_time = moment(end_time, "DD/MMM/YYYY").format("DD/MM/YYYY");
-
+			
 			$.ajax({
 				url: "<?php echo base_url('/roles/search'); ?>",
 				method: "POST",
 				data: {
-					start_date: formatted_start_time,
-					end_date: formatted_end_time
+					start_date: start_time,
+					end_date: end_time
 				},
 				success: function (response) {
 

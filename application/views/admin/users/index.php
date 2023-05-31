@@ -1,34 +1,39 @@
 <section class="content">
 	<div class="container-fluid">
-		<form method="POST" id="search-user" >
-			<div class="row">
-				<div class="col-2">
-					<label class="mr-2" for="">Start date</label>
-					<input type="text" class="form-control " id="start_time" name="start_time">
-				</div>
-				<div class="col-2">
-					<label class="mr-2" for="">End date</label>
-					<input type="text" class="form-control " id="end_time" name="end_time">
-				</div>
+		<div class="card">
+			<div class="card-body">
+				<form method="POST" id="search-user">
+					<div class="row">
+						<div class="col-2">
+							<label class="mr-2" for="">Start date</label>
+							<input type="text" class="form-control " id="start_time" name="start_time">
+						</div>
+						<div class="col-2">
+							<label class="mr-2" for="">End date</label>
+							<input type="text" class="form-control " id="end_time" name="end_time">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-2">
+							<button class="btn btn-success mt-3">Search</button>
+						</div>
+
+					</div>
+				</form>
 			</div>
-			<div class="row">
-				<div class="col-2">
-					<button class="btn btn-success mt-3">Search</button>
+		</div>
+
+		<div class="row mt-3 mb-3 d-flex ">
+			<div class="col-12 mt-1 d-flex justify-content-end">
+				<div class="col-7 d-flex justify-content-end">
+					<a href="<?php echo base_url('users/create') ?>" class="btn btn-success col-2">Create User <i
+							class="ml-1 fas fa-plus-square"></i></a>
+					<a href="<?php echo base_url('users/export') ?>" class="btn btn-primary col-2 ml-2">Export Excel <i
+							class=" ml-1 fas fa-file-download"></i></a>
 				</div>
 
-			</div>
-		</form>
-
-		<div class="row mt-3 mb-3">
-			<div class="col-4 mt-1">
-				<a href="<?php echo base_url('users/create') ?>" class="btn btn-success col-4">Create User <i
-						class="ml-1 fas fa-plus-square"></i></a>
-				<a href="<?php echo base_url('users/export') ?>" class="btn btn-primary col-4">Export Excel <i
-						class=" ml-1 fas fa-file-download"></i></a>
-			</div>
-			<div class="col-8 mt-1 ">
 				<form action="<?= base_url('users/import') ?>" method="post" enctype="multipart/form-data">
-					<div class="d-flex col-6">
+					<div class="d-flex justify-content-end">
 						<input type="file" class="form-control col-6" name="excel_file">
 						<button class=" btn btn-info col-4 ml-1">
 							Import Excel <i class="ml-1 fas fa-file-import"></i></button>

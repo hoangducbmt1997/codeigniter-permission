@@ -7,7 +7,7 @@
 			<div class="col-12">
 				<div class="card card-primary">
 					<div class="card-header">
-						<h6 class="card-title">Edit permissions for:
+						<h6 class="card-title mt-2">Edit permissions for:
 							<?php echo $role->name; ?>
 						</h6>
 					</div>

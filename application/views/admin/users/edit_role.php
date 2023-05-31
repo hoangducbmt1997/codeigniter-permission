@@ -6,7 +6,7 @@
 			<div class="col-12">
 				<div class="card card-primary">
 					<div class="card-header">
-						<h3 class="card-title">Edit role for:
+						<h3 class="card-title mt-2">Edit role for:
 							<?php echo $user->username; ?>
 						</h3>
 					</div>

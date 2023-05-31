@@ -464,6 +464,7 @@ class UserController extends MY_Controller
 
 			$start_time = $this->input->post('start_date');
 			$end_time = $this->input->post('end_date');
+			
 			$start_time = date('Y-m-d H:i:s', strtotime($start_time));
 			$end_time = date('Y-m-d H:i:s', strtotime($end_time));
 
