@@ -27,6 +27,7 @@ class PermissionController extends MY_Controller
 
 		$permissions = $this->Permission_Model->get_permissions();
 		$this->data['permissions'] = $permissions;
+		$this->data['title'] = $this->lang->line('sidebar_permission');
 		$this->data['content'] = 'admin/permissions/index';
 		$this->data['js'] = 'admin/permissions/js';
 		$this->load->view('admin_layout/layout', $this->data);
@@ -163,7 +164,8 @@ class PermissionController extends MY_Controller
 		$end_time = date('Y-m-d H:i:s', strtotime($end_time));
 
 
-		
+
+
 		$permissions = $this->Permission_Model->search_permissions_by_time($start_time, $end_time);
 
 		$data['search_result'] = $permissions;

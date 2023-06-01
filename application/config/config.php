@@ -78,6 +78,8 @@ $config['url_suffix'] = '';
 */
 $config['language']	= 'english';
 
+$config['languages'] = array('english', 'vietnamese');
+
 /*
 |--------------------------------------------------------------------------
 | Default Character Set

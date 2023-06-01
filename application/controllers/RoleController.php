@@ -29,6 +29,7 @@ class RoleController extends MY_Controller
 		}
 
 		$roles = $this->Role_Model->get_roles();
+		$this->data['title'] = $this->lang->line('sidebar_role');
 		$this->data['roles'] = $roles;
 		$this->data['content'] = 'admin/roles/index';
 		$this->data['js'] = 'admin/roles/js';

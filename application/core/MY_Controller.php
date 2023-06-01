@@ -7,6 +7,13 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->check_login();
+
+        if ($this->session->userdata('language')) {
+            $language = $this->session->userdata('language');
+            $this->lang->load('app', $language);
+        } else {
+            $this->lang->load('app', 'english');
+        }
     }
     private function check_login()
     {

@@ -20,6 +20,7 @@
 			var end_time = $("#end_time").val();
 
 
+
 			$.ajax({
 				url: "<?php echo base_url('/permissions/search'); ?>",
 				method: "POST",

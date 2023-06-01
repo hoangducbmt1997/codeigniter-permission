@@ -21,7 +21,7 @@
 				<?php endif;?>
 
         <div class="info">
-          <a href="#" class="d-block">Hi, <?php echo $this->session->userdata('user_logged')['name']; ?></a>
+          <a href="#" class="d-block"><?php echo $this->lang->line('msg_hi')?>, <?php echo $this->session->userdata('user_logged')['name']; ?></a>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
             <a href="<?php echo base_url('users/list'); ?>" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
-							User Management
+							<?php echo $this->lang->line('sidebar_user')?>
               </p>
             </a>
           </li>
@@ -43,7 +43,7 @@
             <a href="<?php echo base_url('roles/list'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-users-cog"></i>
               <p>
-                Role Management
+							<?php echo $this->lang->line('sidebar_role')?>
               </p>
             </a>
           </li>
@@ -52,7 +52,7 @@
             <a href="<?php echo base_url('permissions/list'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-pager"></i>
               <p>
-                Permission Management
+							<?php echo $this->lang->line('sidebar_permission')?>
               </p>
             </a>
 
@@ -61,8 +61,7 @@
             <a href="#" class="nav-link">
 						<i class="nav-icon fas fa-chart-line"></i>
               <p>
-							Statistic and Report 
-                
+							<?php echo $this->lang->line('sidebar_statistic_report')?>
               </p>
             </a>
           </li>

@@ -63,6 +63,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] 	= 'DashboardController';
 $route['dashboard'] 			= 'DashboardController';
 $route['403'] 					= 'DashboardController/access_denied';
+$route['403'] 					= 'DashboardController/access_denied';
+
 
 
 /*
@@ -158,7 +160,18 @@ $route['permissions/update/(:num)'] 	= 'PermissionController/update/$1';
 
 $route['permissions/delete/(:num)'] 	= 'PermissionController/delete/$1';
 
-$route['permissions/search']  		= 'PermissionController/search_permission_by_time';
+$route['permissions/search']  			= 'PermissionController/search_permission_by_time';
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Route language
+|--------------------------------------------------------------------------
+*/
+
+$route['language/(:any)'] 				= 'LanguageController/change_language/$1';
+
 
 
 

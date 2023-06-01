@@ -9,3 +9,8 @@ a{
 .error{
 	color: red !important;
 }
+
+.dropdown.dropdown-language:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+}

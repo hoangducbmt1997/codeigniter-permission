@@ -42,8 +42,10 @@ class UserController extends MY_Controller
 
 		$users = $this->User_Model->get_all_users();
 		$this->data['users'] = $users;
+		$this->data['title'] = $this->lang->line('sidebar_user');
 		$this->data['content'] = 'admin/users/index';
 		$this->data['js'] = 'admin/users/js';
+
 		$this->load->view('admin_layout/layout', $this->data);
 	}
 
