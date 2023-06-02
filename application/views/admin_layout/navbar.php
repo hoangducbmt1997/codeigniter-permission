@@ -102,15 +102,17 @@
 						<img width="15" src="<?php echo base_url('/assets/icon/icon-eng-lang.png') ?>">
 					<?php elseif ($this->session->userdata('language') == 'vietnamese'): ?>
 						<img width="15" src="<?php echo base_url('/assets/icon/icon-vn-lang.png') ?>">
+					<?php else: ?>
+						<img width="15" src="<?php echo base_url('/assets/icon/icon-eng-lang.png') ?>">
 					<?php endif; ?>
 
 
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="<?php echo base_url('language/english'); ?>">
+					<a class="dropdown-item" href="<?php echo base_url('language/change_language/english'); ?>">
 						English
 					</a>
-					<a class="dropdown-item" href="<?php echo base_url('language/vietnamese'); ?>">
+					<a class="dropdown-item" href="<?php echo base_url('language/change_language/vietnamese'); ?>">
 						Vietnamese
 					</a>
 

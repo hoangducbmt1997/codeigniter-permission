@@ -57,11 +57,13 @@ class PermissionController extends MY_Controller
 			// Save data
 			$permission_id = $this->Permission_Model->create_permission($user_data);
 
-			$this->session->set_flashdata('sweet_alert', array(
-				'title' => 'Success',
-				'text' => 'Permission added successfully!',
-				'type' => 'success'
-			)
+			$this->session->set_flashdata(
+				'sweet_alert',
+				array(
+					'title' => 'Success',
+					'text' => 'Permission added successfully!',
+					'type' => 'success'
+				)
 			);
 
 			return redirect(base_url('permissions'));
@@ -101,11 +103,13 @@ class PermissionController extends MY_Controller
 				// Update data
 				$this->Permission_Model->update_permission($permission_id, $permission_data);
 
-				$this->session->set_flashdata('sweet_alert', array(
-					'title' => 'Success',
-					'text' => 'Permission updated successfully!',
-					'type' => 'success'
-				)
+				$this->session->set_flashdata(
+					'sweet_alert',
+					array(
+						'title' => 'Success',
+						'text' => 'Permission updated successfully!',
+						'type' => 'success'
+					)
 				);
 
 				// Redirect to success permission
@@ -132,11 +136,13 @@ class PermissionController extends MY_Controller
 		// Delete permission
 		$this->Permission_Model->delete_permission($permission_id);
 
-		$this->session->set_flashdata('sweet_alert', array(
-			'title' => 'Success',
-			'text' => 'Permission deleted successfully!',
-			'type' => 'success'
-		)
+		$this->session->set_flashdata(
+			'sweet_alert',
+			array(
+				'title' => 'Success',
+				'text' => 'Permission deleted successfully!',
+				'type' => 'success'
+			)
 		);
 
 		return redirect(base_url('permissions'));
@@ -155,16 +161,14 @@ class PermissionController extends MY_Controller
 		}
 	}
 
-	public function search_permission_by_time(){
+	public function search_permission_by_time()
+	{
 
 		$start_time = $this->input->post('start_date');
 		$end_time = $this->input->post('end_date');
 
 		$start_time = date('Y-m-d H:i:s', strtotime($start_time));
 		$end_time = date('Y-m-d H:i:s', strtotime($end_time));
-
-
-
 
 		$permissions = $this->Permission_Model->search_permissions_by_time($start_time, $end_time);
 

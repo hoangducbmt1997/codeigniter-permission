@@ -167,10 +167,37 @@ $route['permissions/search']  			= 'PermissionController/search_permission_by_ti
 /*
 |--------------------------------------------------------------------------
 | Route language
+| Language:list_language|add_language|edit_language|delete_language
 |--------------------------------------------------------------------------
 */
 
-$route['language/(:any)'] 				= 'LanguageController/change_language/$1';
+$route['language/change_language/(:any)'] 	= 'LanguageController/change_language/$1';
+
+$route['language'] 							= 'LanguageController';
+$route['language/list'] 					= 'LanguageController';
+$route['language/create'] 					= 'LanguageController/create';
+$route['language/store'] 					= 'LanguageController/store';
+
+$route['language/edit/(:num)'] 				= 'LanguageController/edit/$1';
+$route['language/update/(:num)'] 			= 'LanguageController/update/$1';
+
+$route['language/delete/(:num)'] 			= 'LanguageController/delete/$1';
+
+$route['language/search']  					= 'LanguageController/search_language_by_time';
+
+/*
+|--------------------------------------------------------------------------
+| Route Email
+|--------------------------------------------------------------------------
+*/
+
+$route['email'] 						= 'EmailController';
+$route['email/list'] 					= 'EmailController';
+$route['email/create'] 					= 'EmailController/create';
+$route['email/send-email'] 				= 'EmailController/send_email';
+
+
+
 
 
 

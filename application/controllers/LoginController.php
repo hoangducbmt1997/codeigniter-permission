@@ -115,6 +115,7 @@ class LoginController extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('user_logged');
+        $this->session->unset_userdata('language');
         $this->session->unset_userdata('error');
 
         // Delete the token in the memory_login table

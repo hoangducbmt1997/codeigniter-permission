@@ -25,12 +25,6 @@
 
 		<?php $this->load->view('admin_layout/sidebar'); ?>
 
-
-		<?php
-		
-		?>
-
-
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -41,7 +35,11 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-left">
 								<li class="breadcrumb-item"><a href="#"><?php echo $this->lang->line('title_dashboard') ?></a></li>
-								<li class="breadcrumb-item active"><?php echo $title; ?></li>
+								<li class="breadcrumb-item active"><?php if(isset($title)){
+									echo $title;
+								}else{
+									echo 'Home';
+								} ?></li>
 							</ol>
 						</div><!-- /.col -->
 					</div><!-- /.row -->
