@@ -195,6 +195,8 @@ $route['email'] 						= 'EmailController';
 $route['email/list'] 					= 'EmailController';
 $route['email/create'] 					= 'EmailController/create';
 $route['email/send-email'] 				= 'EmailController/send_email';
+$route['email/resend-email/(:num)'] 	= 'EmailController/resend_email/$1';
+
 
 
 

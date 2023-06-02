@@ -45,7 +45,7 @@
 										</td>
 										<td class="text-center">
 											<a class="btn btn-info"
-												href="<?php echo base_url('emails/edit/' . $email->id) ?>">Re-send</a>
+												href="<?php echo base_url('email/resend-email/' . $email->id) ?>">Re-send</a>
 											<a class="btn btn-danger"
 												href="<?php echo base_url('emails/delete/' . $email->id) ?>"><?php echo $this->lang->line('btn_delete') ?></a>
 										</td>

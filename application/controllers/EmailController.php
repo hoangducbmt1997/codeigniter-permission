@@ -55,8 +55,8 @@ class EmailController extends MY_Controller
 
 				$email_data = array(
 					'send_to' => $recipient,
-					'subject' 	=> $subject,
-					'content' 	=> $message,
+					'subject' => $subject,
+					'content' => $message,
 				);
 
 				$email_id = $this->Email_Model->create_email($email_data);
@@ -87,6 +87,40 @@ class EmailController extends MY_Controller
 
 		}
 	}
+
+	public function resend_email($id)
+	{
+
+		$email = $this->Email_Model->get_email($id);
+
+		$this->email->from('hoangduc1997@gmail.com', 'Nguyễn Hoàng Đức');
+		$this->email->to($email->send_to);
+		$this->email->subject($email->subject);
+		$this->email->message($email->content);
+
+		if ($this->email->send()) {
+			$this->session->set_flashdata(
+				'sweet_alert',
+				array(
+					'title' => 'Success',
+					'text' => 'Email re-send successfully!',
+					'type' => 'success'
+				)
+			);
+			redirect(base_url('email'));
+		} else {
+			$this->session->set_flashdata(
+				'sweet_alert',
+				array(
+					'title' => 'Error',
+					'text' => 'Email re-send fail!' . $this->email->print_debugger(),
+					'type' => 'error'
+				)
+			);
+			redirect(base_url('email'));
+		}
+	}
+
 
 
 
