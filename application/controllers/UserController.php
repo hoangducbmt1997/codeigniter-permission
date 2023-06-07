@@ -99,6 +99,32 @@ class UserController extends MY_Controller
 
 				return redirect(base_url('users'));
 			} else {
+
+				$upload_data = $this->upload->data();
+				$image_name = $upload_data['file_name'];
+
+				if (empty($image_name)) {
+
+					$user_data = array(
+						'username' => $this->input->post('username'),
+						'email' => $this->input->post('email'),
+						'password' => md5($this->input->post('password')),
+						'image' => '',
+					);
+
+					$this->session->set_flashdata(
+						'sweet_alert',
+						array(
+							'title' => 'Success',
+							'text' => 'User added successfully!',
+							'type' => 'success'
+						)
+					);
+
+					$user_id = $this->User_Model->create_user($user_data);
+					return redirect(base_url('users'));
+				}
+
 				// Handling when an error occurs during file upload
 				echo $error = $this->upload->display_errors();
 				// Error handling or navigation to another page
@@ -461,19 +487,20 @@ class UserController extends MY_Controller
 	}
 
 
-	
-	public function search_user_by_time(){
 
-			$start_time = $this->input->post('start_date');
-			$end_time = $this->input->post('end_date');
-			
-			$start_time = date('Y-m-d H:i:s', strtotime($start_time));
-			$end_time = date('Y-m-d H:i:s', strtotime($end_time));
+	public function search_user_by_time()
+	{
 
-			$users = $this->User_Model->search_users_by_time($start_time, $end_time);
+		$start_time = $this->input->post('start_date');
+		$end_time = $this->input->post('end_date');
 
-			$data['search_result'] = $users;
-			$this->load->view('admin/users/search_result', $data);
+		$start_time = date('Y-m-d H:i:s', strtotime($start_time));
+		$end_time = date('Y-m-d H:i:s', strtotime($end_time));
+
+		$users = $this->User_Model->search_users_by_time($start_time, $end_time);
+
+		$data['search_result'] = $users;
+		$this->load->view('admin/users/search_result', $data);
 	}
 
 }
